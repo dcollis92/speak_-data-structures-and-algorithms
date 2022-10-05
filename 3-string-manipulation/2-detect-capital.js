@@ -28,7 +28,7 @@
 
 var detectCapitalUse = function (word) {
   return (
-    word === word.toUpperCase() || 
+    word === word.toUpperCase() ||
     // All letters are capitals
     word === word.toLowerCase() ||
     // All letters are not capitals
