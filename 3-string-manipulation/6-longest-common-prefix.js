@@ -40,5 +40,7 @@ var longestCommonPrefix = function (strs) {
   }
   return prefix;
   // Return the prefix
-
 };
+
+// Success
+// Runtime: 84ms, faster than 77.10% of JavaScript online submissions for Longest Common Prefix.
