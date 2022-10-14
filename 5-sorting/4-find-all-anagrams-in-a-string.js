@@ -71,3 +71,6 @@ function compareMaps(map1, map2) {
   }
   return true;
 }
+
+// Success
+// Runtime: 275 ms, faster than 33.80% of JavaScript online submissions for Find All Anagrams in a String.
