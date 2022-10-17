@@ -40,7 +40,7 @@
  * @return {ListNode}
  */
 
- var reverseBetween = function(head, m, n) {
+var reverseBetween = function (head, m, n) {
   // 1. create a dummy head
   var newHead = new ListNode(0);
   // 2. create a pointer to the dummy head
@@ -76,7 +76,7 @@
       reverseLast = now;
       // 15. assign reverseNow to the pointer
       reverseNow = now;
-    } 
+    }
 
     // if the index is greater than m and less than n
     if (i > m && i <= n) {
