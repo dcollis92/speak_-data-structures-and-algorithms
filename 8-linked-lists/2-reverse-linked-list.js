@@ -1,46 +1,48 @@
-/*
- * 92. Reverse Linked List II
+/* 
+ * 206. Reverse Linked List
  *
- * Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes of the list from position left to position right, and return the reversed list.
- *
+ * Given the head of a singly linked list, reverse the list, and return the reversed list.
+ * 
  * Example 1:
  * (1 -> 2 -> 3 -> 4 -> 5)
- *            |
- *            V
- * (1 -> 4 -> 3 -> 2 -> 5)
- * Input: head = [1,2,3,4,5],
- * left = 2, right = 4
- * Output: [1,4,3,2,5]
- *
+ *           |
+ *           V
+ * (5 -> 4 -> 3 -> 2 -> 1)
+ * Input: head = [1,2,3,4,5]
+ * Output:       [5,4,3,2,1]
+ * 
  * Example 2:
- * Input: head = [5],
- * left = 1, right = 1
- * Output: [5]
- *
+ * (1 -> 2)
+ *    |
+ *    V
+ * (2 -> 1)
+ * Input: head = [1,2]
+ * Output:       [2,1]
+ * 
+ * Example 3:
+ * Input: head = []
+ * Output:       []
+ * 
  * Constraints:
- * The number of nodes in the list is n.
- * 1 <= n <= 500
- * -500 <= Node.val <= 500
- * 1 <= left <= right <= n
- *
- * Follow up: Could you do it in one pass?
- */
+ * The number of nodes in the list is the range [0, 5000].
+ * -5000 <= Node.val <= 5000
+ * 
+ * Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
+*/
 
 /**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
- *    this.val = (val===undefined ? 0 : val)
- *   this.next = (next===undefined ? null : next)
+ *   this.val = (val===undefined ? 0 : val)
+ *  this.next = (next===undefined ? null : next)
  * }
- */
+*/
 /**
  * @param {ListNode} head
- * @param {number} left
- * @param {number} right
  * @return {ListNode}
  */
 
-var reverseBetween = function (head, m, n) {
+var reverseList = function (head) {
   // 1. create a dummy head
   var newHead = new ListNode(0);
   // 2. create a pointer to the dummy head
@@ -53,56 +55,26 @@ var reverseBetween = function (head, m, n) {
   var reverseHead = null;
   // 6. reverseNow is the current node of the reversed list
   var reverseNow = null;
-  // 7. i is the index of the current node
-  var i = 0;
 
-  // 8. reassign the next of the dummy head to the head
+  // 7. reassign the next of the dummy head to the head
   newHead.next = head;
 
-  // 9. while the pointer is not null
-  while (now) {
-    // 10. assign tmp to the next of the pointer
+  // 8. while the next of the pointer is not null
+  while (now.next) {
+    // 9. reassign the temp pointer to the next of the pointer
     tmp = now.next;
-
-    // 11. if the index is less than m
-    if (i === m - 1) {
-      // 12. assign reverseHead to the pointer
-      reverseHead = now;
-    }
-
-    // 13. if the index equals m
-    if (i === m) {
-      // 14. assign reverseLast to the pointer
-      reverseLast = now;
-      // 15. assign reverseNow to the pointer
-      reverseNow = now;
-    }
-
-    // if the index is greater than m and less than n
-    if (i > m && i <= n) {
-      // 16. assign the next of the pointer to the reverseNow pointer
-      now.next = reverseNow;
-      //  17. assign reverseNow to the pointer
-      reverseNow = now;
-    }
-
-    // 18. if the index equals n
-    if (i === n) {
-      // 19. assign the next of the reverseLast to the tmp
-      reverseLast.next = tmp;
-      // 20. assign the next of the reverseHead to the reverseNow
-      reverseHead.next = reverseNow;
-    }
-
-    // 21. move to the next node
-    now = tmp;
-    // 22. increment the index
-    i++;
+    // 10. reassign the next of the pointer to the next of the temp pointer
+    now.next = tmp.next;
+    // 11. reassign the next of the temp pointer to the next of the reverse head
+    tmp.next = reverseHead;
+    // 12. reassign the reverse head to the temp pointer
+    reverseHead = tmp;
   }
 
-  // 23. return the next of the dummy head
-  return newHead.next;
-};
+  // 13. reassign the next of the dummy head to the reverse head
+  newHead.next = reverseHead;
 
-// Success
-// Runtime: 96 ms, faster than 49.20% of JavaScript online submissions for Reverse Linked List II.
+  // 14. return the next of the dummy head
+  return newHead.next;
+
+}
