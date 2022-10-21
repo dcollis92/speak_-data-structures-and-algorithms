@@ -23,7 +23,7 @@
  *
  * The judge will then create the linked structure based on these inputs and pass the two heads, headA and headB to your program. If you correctly return the intersected node, then your solution will be accepted.
  *
- * --------------------------------------
+ * ------------------------------------
  * Example 1:
  * A:     (4)→(1)
  *               ↘
@@ -72,7 +72,7 @@
  * From the head of B, it reads as [1,5].
  * Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.
  * Explanation: The two lists do not intersect, so return null.
- * --------------------------------------
+ * ------------------------------------
  *
  * Constraints:
  * The number of nodes of listA is in the m.
