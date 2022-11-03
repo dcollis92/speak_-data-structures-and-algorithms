@@ -75,3 +75,19 @@ var isValidBST = function (root) {
 // Runtime: 130 ms, faster than 24.90% of JavaScript online submissions for Validate Binary Search Tree.
 
 //! Alternate Solution
+
+/*
+var isValidBST = function(root) {
+    if (!root) return true
+    return validate(root, null, null)
+};
+
+function validate(node, min, max) {
+    if (min !== null && node.val <= min) return false
+    if (max !== null && node.val >= max) return false
+    
+    if (node.left && !validate(node.left, min, node.val)) return false
+    if (node.right && !validate(node.right, node.val, max)) return false
+    return true
+}
+*/
